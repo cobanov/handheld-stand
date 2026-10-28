@@ -1,0 +1,6 @@
+.DS_Store
+*.FCBak
+*.FCStd1
+__pycache__/
+# slicer output: printer-specific, regenerate with slice_k1.sh
+gcode/
