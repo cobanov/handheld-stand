@@ -40,7 +40,7 @@ DEVICES = {
           "Retroid Pocket 4": (184, 81, 16, 280)},
     "W": {"Switch": (239, 102, 14, 398), "Switch OLED": (242, 102, 14, 420), "Switch Lite": (208, 91, 14, 275)},
 }
-PLA = 1.24      # g/cm3, for the stand's own weight in the tipping check
+PLA = 1.24 * 0.70   # g/cm3 x printed fill (2 walls + 20 % core, ~70 % of solid), for the stand's own weight in the tipping check
 
 th = math.radians(TILT)
 u = App.Vector(-math.sin(th), 0, math.cos(th))   # up along a back plate

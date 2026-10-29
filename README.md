@@ -24,18 +24,19 @@ than the one in front of it, so each screen stays in view. Prints on its side wi
 
 | Variant | Tiers | Width | Size D × W × H (mm) | PLA | Time (K1) |
 |---|---|---|---|---|---|
-| 1N | 1 | 50 | 68 × 50 × 66 | 33 g | 46 min |
-| 1M | 1 | 80 | 68 × 80 × 66 | 53 g | 1 h 11 min |
-| 1W | 1 | 120 | 68 × 120 × 66 | 80 g | 1 h 43 min |
-| 2N | 2 | 50 | 114 × 50 × 107 | 67 g | 1 h 24 min |
-| 2M | 2 | 80 | 114 × 80 × 107 | 107 g | 2 h 11 min |
-| 2W | 2 | 120 | 114 × 120 × 107 | 160 g | 3 h 12 min |
-| 3N | 3 | 50 | 160 × 50 × 148 | 108 g | 2 h 9 min |
-| 3M | 3 | 80 | 160 × 80 × 148 | 173 g | 3 h 21 min |
-| 3W | 3 | 120 | 160 × 120 × 148 | 259 g | 4 h 57 min |
+| 1N | 1 | 50 | 68 × 50 × 66 | 24 g | 48 min |
+| 1M | 1 | 80 | 68 × 80 × 66 | 38 g | 1 h 15 min |
+| 1W | 1 | 120 | 68 × 120 × 66 | 56 g | 1 h 50 min |
+| 2N | 2 | 50 | 114 × 50 × 107 | 48 g | 1 h 18 min |
+| 2M | 2 | 80 | 114 × 80 × 107 | 76 g | 2 h 1 min |
+| 2W | 2 | 120 | 114 × 120 × 107 | 113 g | 2 h 57 min |
+| 3N | 3 | 50 | 160 × 50 × 148 | 78 g | 2 h 3 min |
+| 3M | 3 | 80 | 160 × 80 × 148 | 123 g | 3 h 10 min |
+| 3W | 3 | 120 | 160 × 120 × 148 | 184 g | 4 h 41 min |
 
-Weights and times are OrcaSlicer estimates for a Creality K1: 0.4 mm nozzle, 0.2 mm layers, 3 walls, 20 % infill.
-At these settings the 3 mm walls come out nearly solid.
+Weights and times are OrcaSlicer estimates for a Creality K1: 0.4 mm nozzle, 0.2 mm layers, 2 walls, 20 % infill.
+Each 3 mm wall prints as two perimeters a side around a thin infill core: about 70 % of the solid weight,
+with nearly all of its bending stiffness.
 
 ## Which width
 
@@ -76,24 +77,27 @@ class (Miyoo Mini Plus, PSP-1000, Switch OLED).
 
 | Variant | Forward | Backward |
 |---|---|---|
-| 1N | 31.0° | 26.9° |
-| 1M | 33.3° | 36.2° |
-| 1W | 34.2° | 28.9° |
-| 2N | 36.7° | 24.6° |
-| 2M | 39.3° | 28.2° |
-| 2W | 39.0° | 24.3° |
-| 3N | 40.6° | 26.0° |
-| 3M | 42.7° | 27.5° |
-| 3W | 42.2° | 24.9° |
+| 1N | 30.3° | 25.4° |
+| 1M | 32.5° | 35.1° |
+| 1W | 33.6° | 27.7° |
+| 2N | 34.6° | 21.8° |
+| 2M | 37.2° | 25.9° |
+| 2W | 37.3° | 21.9° |
+| 3N | 39.7° | 22.5° |
+| 3M | 41.9° | 24.1° |
+| 3W | 41.5° | 21.4° |
 
-Backward is the weak direction because the devices lean back. `build_stand.py` prints this table on every run.
+Backward is the weak direction because the devices lean back. The stand's own weight is taken as printed (about
+70 % of solid). `build_stand.py` prints this table on every run.
 
 ## Printing
 
 - **Orientation:** on its side, as the STLs come, with the chamfered side face on the bed.
 - **Material:** PLA or PETG.
-- **Settings:** 0.2 mm layers, 3 walls, 15–20 % infill, no supports. A 5 mm outer brim helps the tall W variants;
-  N and M print fine without one.
+- **Settings:** 0.2 mm layers, 2 walls, 15–20 % infill, no supports.
+- **Adhesion:** the side face on the bed is chamfered, so each 3 mm wall touches the bed with only about 1.4 mm.
+  Use an 8 mm brim with no gap to the part, a 60 °C bed and no side (auxiliary) fan, and keep the door closed;
+  without these the ends lift. The chamfer hides the brim scar once it is snapped off.
 
 ![2M close-up](images/render-03-detail-2M.png)
 

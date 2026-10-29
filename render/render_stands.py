@@ -1,5 +1,6 @@
 # Product renders of the stand family on an oak desk, for the model card.
 # Run: /Applications/Blender.app/Contents/MacOS/Blender -b -P render/render_stands.py [-- shot ...]
+# choso-wsl (4090, ~2.7x faster): rsync render/ stl/ to ~/handheld-stand, then ~/opt/blender-5.2.3-linux-x64/blender -b -P render/render_stands.py
 # Assets (CC0, Poly Haven): artist_workshop HDRI, oak_veneer_01 texture, in render/assets/.
 import math
 import os
@@ -23,7 +24,14 @@ def reset():
     sc = bpy.context.scene
     sc.render.engine = "CYCLES"
     prefs = bpy.context.preferences.addons["cycles"].preferences
-    prefs.compute_device_type = "METAL"
+    for dev in ("OPTIX", "CUDA", "METAL"):   # choso-wsl 4090 → OPTIX, Mac → METAL
+        try:
+            prefs.compute_device_type = dev
+        except TypeError:   # not in this build
+            continue
+        if any(d.type == dev for d in prefs.get_devices_for_type(dev)):
+            break
+    print("compute device:", prefs.compute_device_type)
     prefs.get_devices()
     for d in prefs.devices:
         d.use = True
