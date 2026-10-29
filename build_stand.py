@@ -110,7 +110,7 @@ def tipping(shape, tiers, load):
 try:
     HERE = os.path.dirname(os.path.abspath(__file__))
 except NameError:
-    HERE = os.path.expanduser("~/Developer/handheld-stand")
+    HERE = os.path.expanduser("~/Workspace/3d-projects/handheld-stand")
 os.makedirs(os.path.join(HERE, "stl"), exist_ok=True)
 os.makedirs(os.path.join(HERE, "step"), exist_ok=True)
 
